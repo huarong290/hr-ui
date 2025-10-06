@@ -1,40 +1,22 @@
 <!-- src/layout/aside/index.vue -->
 <template>
-  <div class="aside-container">
+  <div class="aside-container" :style="{ backgroundColor: themeColor }">
     <div class="logo">
       <span class="logo-text">HR系统</span>
+      <el-icon @click="toggleMenuCollapse" class="collapse-icon">
+        <Fold v-if="!isMenuCollapsed" />
+        <Expand v-else />
+      </el-icon>
     </div>
-    <el-menu default-active="/dashboard" class="aside-menu" router>
-      <el-menu-item index="/dashboard">
-        <el-icon><HomeFilled /></el-icon>
-        <span>控制台</span>
-      </el-menu-item>
-      <el-menu-item index="/employee">
-        <el-icon><User /></el-icon>
-        <span>员工管理</span>
-      </el-menu-item>
-      <el-menu-item index="/attendance">
-        <el-icon><Clock /></el-icon>
-        <span>考勤管理</span>
-      </el-menu-item>
-      <el-menu-item index="/salary">
-        <el-icon><Money /></el-icon>
-        <span>薪资管理</span>
-      </el-menu-item>
-      <el-menu-item index="/recruitment">
-        <el-icon><Briefcase /></el-icon>
-        <span>招聘管理</span>
-      </el-menu-item>
-      <el-menu-item index="/system">
-        <el-icon><Setting /></el-icon>
-        <span>系统管理</span>
-      </el-menu-item>
-    </el-menu>
+    <AppMenu :isCollapse="isMenuCollapsed" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { HomeFilled, User, Clock, Setting, Money, Briefcase } from '@element-plus/icons-vue'
+import AppMenu from '@/views/layout/AppMenu.vue'
+import { useAppStore } from '@/stores/app/appStore'
+
+const { isMenuCollapsed, toggleMenuCollapse, themeColor } = useAppStore()
 </script>
 
 <style scoped lang="scss">

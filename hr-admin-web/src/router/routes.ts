@@ -8,8 +8,12 @@ import Employee from '@/views/employee/index.vue'
 import Attendance from '@/views/attendance/index.vue'
 import Salary from '@/views/salary/index.vue'
 import Recruitment from '@/views/recruitment/index.vue'
-import System from '@/views/system/index.vue'
-// 所有静态路由
+import ModuleLayout from '@/components/module/ModuleLayout.vue'
+import UserList from '@/views/system/user/list.vue'
+import UserDetail from '@/views/system/user/detail.vue'
+import RoleList from '@/views/system/role/list.vue'
+import RoleAssign from '@/views/system/role/assign.vue'
+
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
@@ -56,9 +60,51 @@ const routes: RouteRecordRaw[] = [
       },
       {
         path: 'system',
-        name: 'System',
-        component: System,
+        component: ModuleLayout,
+        props: { title: '系统设置' },
         meta: { title: '系统设置', icon: 'ep:setting' },
+        children: [
+          {
+            path: 'user',
+            component: ModuleLayout,
+            props: { title: '用户管理' },
+            meta: { title: '用户管理', icon: 'ep:user-filled' }, // ✅ 添加 meta
+            children: [
+              {
+                path: 'list',
+                name: 'UserList',
+                component: UserList,
+                meta: { title: '用户列表' },
+              },
+              {
+                path: 'detail/:id',
+                name: 'UserDetail',
+                component: UserDetail,
+                meta: { title: '用户详情', hidden: true },
+              },
+            ],
+          },
+          {
+            path: 'role',
+            component: ModuleLayout,
+            props: { title: '角色管理' },
+            meta: { title: '角色管理', icon: 'ep:avatar' }, // ✅ 添加 meta
+            children: [
+              {
+                path: 'list',
+                name: 'RoleList',
+                component: RoleList,
+                meta: { title: '角色列表' },
+              },
+              {
+                path: 'assign',
+                name: 'RoleAssign',
+                component: RoleAssign,
+                meta: { title: '权限分配' },
+              },
+            ],
+          },
+        ],
       },
     ],
   },
