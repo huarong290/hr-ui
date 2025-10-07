@@ -1,4 +1,5 @@
 <template>
+  <!-- 子菜单 -->
   <el-sub-menu v-if="hasChildren" :index="fullPath">
     <template #title>
       <component :is="item.meta?.icon" class="menu-icon" />
@@ -12,6 +13,7 @@
     />
   </el-sub-menu>
 
+  <!-- 普通菜单项 -->
   <el-menu-item v-else :index="fullPath">
     <component :is="item.meta?.icon" class="menu-icon" />
     <span>{{ item.meta?.title }}</span>
@@ -22,7 +24,7 @@
 import type { RouteRecordRaw } from 'vue-router'
 import { computed } from 'vue'
 
-// ✅ 解构 props，避免 item 未定义错误
+// ✅ 接收 props
 const { item, basePath } = defineProps<{
   item: RouteRecordRaw
   basePath: string
@@ -32,7 +34,6 @@ const { item, basePath } = defineProps<{
 const fullPath = computed(() =>
   item.path.startsWith('/') ? item.path : `${basePath.replace(/\/$/, '')}/${item.path}`,
 )
-console.log('fullPath:', fullPath.value)
 
 // ✅ 判断是否有子菜单
 const hasChildren = computed(() => item.children?.length)
@@ -41,7 +42,7 @@ const hasChildren = computed(() => item.children?.length)
 const visibleChildren = computed(() => item.children?.filter((c) => !c.meta?.hidden) || [])
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .menu-icon {
   margin-right: 8px;
   color: inherit;
