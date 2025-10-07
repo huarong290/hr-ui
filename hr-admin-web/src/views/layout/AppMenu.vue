@@ -1,6 +1,12 @@
 <!-- src/views/layout/AppMenu.vue -->
 <template>
-  <el-menu :default-active="activePath" class="app-menu" router :collapse="isCollapse">
+  <el-menu
+    :default-active="activePath"
+    class="app-menu"
+    router
+    :style="{ backgroundColor: themeColor }"
+    :collapse="isCollapse"
+  >
     <MenuItem v-for="item in visibleRoutes" :key="item.path" :item="item" :basePath="'/'" />
   </el-menu>
 </template>
@@ -10,7 +16,8 @@ import { useRoute } from 'vue-router'
 import MenuItem from './MenuItem.vue'
 import { computed } from 'vue'
 import routes from '@/router/routes'
-
+import { useAppStore } from '@/stores/app/appStore'
+const { themeColor } = useAppStore()
 defineProps<{ isCollapse?: boolean }>()
 
 const route = useRoute()
@@ -26,6 +33,5 @@ console.log('visibleRoutes:', visibleRoutes.value)
 .app-menu {
   height: 100%;
   border-right: none;
-  background-color: #001529;
 }
 </style>

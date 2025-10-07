@@ -1,7 +1,7 @@
 <!-- src/layout/aside/index.vue -->
 <template>
-  <div class="aside-container" :style="{ backgroundColor: themeColor }">
-    <div class="logo">
+  <div class="aside-container">
+    <div class="logo" :style="{ backgroundColor: themeColor }">
       <span class="logo-text">HR系统</span>
       <el-icon @click="toggleMenuCollapse" class="collapse-icon">
         <Fold v-if="!isMenuCollapsed" />
@@ -24,7 +24,6 @@ const { isMenuCollapsed, toggleMenuCollapse, themeColor } = useAppStore()
   width: 220px;
   min-width: 220px; /* 固定最小宽度 */
   height: 100vh;
-  background-color: #001529;
   margin: 0;
   padding: 0;
   flex-shrink: 0; /* 重要：防止侧边栏被压缩 */
@@ -47,35 +46,6 @@ const { isMenuCollapsed, toggleMenuCollapse, themeColor } = useAppStore()
 .aside-menu {
   height: calc(100% - 60px);
   border-right: none;
-  background-color: #001529;
-
-  /* 深度选择器修改Element Plus组件样式 */
-  :deep(.el-menu-item) {
-    color: #bfcbd9;
-    background-color: #001529;
-
-    &.is-active {
-      color: #409eff;
-      background-color: #0c2135;
-    }
-
-    &:hover {
-      background-color: #0c2135;
-    }
-
-    .el-icon {
-      color: inherit;
-    }
-
-    span {
-      color: inherit;
-    }
-  }
-
-  :deep(.el-menu) {
-    background-color: #001529;
-    border-right: none;
-  }
 }
 
 // .aside-container {
