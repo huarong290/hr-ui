@@ -5,8 +5,13 @@
     <div class="app-main">
       <Header />
       <Breadcrumb />
+      <AppTab /><!--  新增标签页组件 -->
       <div class="app-content">
-        <router-view />
+        <router-view v-slot="{ Component, route }">
+          <keep-alive :include="cachedViews">
+            <component :is="Component" :key="route.fullPath" />
+          </keep-alive>
+        </router-view>
       </div>
     </div>
   </div>
@@ -16,6 +21,21 @@
 import Header from './AppHeader.vue'
 import AppSidebar from './AppSideBar.vue'
 import Breadcrumb from './Breadcrumb.vue'
+import AppTab from './AppTab.vue'
+import { useTabStore } from '@/stores/tab/tabStore'
+
+const route = useRoute()
+const tabStore = useTabStore()
+const { cachedViews } = storeToRefs(tabStore)
+watch(
+  () => route.fullPath,
+  () => {
+    if (route.meta?.title) {
+      tabStore.addTab(route)
+    }
+  },
+  { immediate: true },
+)
 </script>
 
 <style scoped lang="scss">
