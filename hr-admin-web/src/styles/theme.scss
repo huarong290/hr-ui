@@ -1,7 +1,15 @@
 /* src/styles/theme.scss */
-:root {
-  --theme-color: #001529;
-  --menu-bg-color: #001529;
-  --menu-hover-color: #0c2135;
-  --menu-active-color: #409eff;
+body.dark {
+  background-color: #1e1e1e;
+  color: #eee;
+}
+
+.dark .app-header {
+  background-color: #2c2c2c;
+  border-bottom-color: #444;
+}
+
+.dark .el-dropdown-menu {
+  background-color: #2c2c2c;
+  color: #eee;
 }

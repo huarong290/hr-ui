@@ -1,5 +1,6 @@
 // src/main.ts
 import '@/styles/index.scss'
+import '@/styles/theme.scss'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import ElementPlus from 'element-plus'
