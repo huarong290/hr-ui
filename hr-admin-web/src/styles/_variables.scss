@@ -1,0 +1,43 @@
+//src/styles/_variables.scss
+// 颜色变量
+$color-primary: #409eff; // 主色调（Element Plus 默认蓝）
+$color-success: #67c23a;
+$color-warning: #e6a23c;
+$color-danger: #f56c6c;
+$color-info: #909399;
+
+// 🌗 灰度色系
+$color-text-primary: #303133;
+$color-text-regular: #606266;
+$color-text-secondary: #909399;
+$color-text-placeholder: #c0c4cc;
+
+// 🧱 背景色
+$background-page: #f5f7fa;
+$background-card: #ffffff;
+$background-hover: #f0f2f5;
+
+// 布局变量
+$sidebar-collapsed-width: 64px;
+$header-height: 60px;
+$sidebar-width: 220px;
+$border-radius: 4px;
+
+// 🖋️ 字体变量
+$font-size-base: 14px;
+$font-size-small: 12px;
+$font-size-large: 16px;
+$font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+// 🌐 层级变量
+$z-index-header: 1000;
+$z-index-sidebar: 900;
+$z-index-dialog: 2000;
+
+:root {
+  --color-bg: #ffffff;
+  --color-text: #303133;
+  --color-primary: #409eff;
+  --sidebar-bg: #ffffff;
+  --header-bg: #ffffff;
+}

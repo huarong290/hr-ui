@@ -47,4 +47,11 @@ export default defineConfig({
       '@types': fileURLToPath(new URL('./src/types', import.meta.url)),
     },
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@use "@/styles/variables" as *;`,
+      },
+    },
+  },
 })

@@ -1,0 +1,21 @@
+:root {
+  --color-bg: #f5f7fa;
+  --color-text: #303133;
+  --color-primary: #409eff;
+  --color-text-secondary: #909399;
+  --card-bg: #ffffff;
+  --hover-bg: #f0f2f5;
+  --header-bg: #ffffff;
+  --sidebar-bg: #ffffff;
+}
+
+html.dark {
+  --color-bg: #1e1e1e;
+  --color-text: #e0e0e0;
+  --color-primary: #409eff;
+  --color-text-secondary: #bfcbd9;
+  --card-bg: #2a2a2a;
+  --hover-bg: #333;
+  --header-bg: #1f1f1f;
+  --sidebar-bg: #141414;
+}

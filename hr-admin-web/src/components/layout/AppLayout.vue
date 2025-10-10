@@ -47,12 +47,15 @@ watch(
 
 <style scoped lang="scss">
 .app-layout {
+  background-color: var(--color-bg);
+  color: var(--color-text);
   display: flex;
   height: 100vh;
   width: 100%;
 }
 
 .app-sidebar {
+  background-color: var(--sidebar-bg);
   width: 220px;
   flex-shrink: 0;
 }

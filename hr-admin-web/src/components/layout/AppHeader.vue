@@ -21,6 +21,12 @@
           <Aim v-else />
         </el-icon>
       </el-tooltip>
+      <el-switch
+        v-model="isDarkMode"
+        active-text="🌙"
+        inactive-text="☀️"
+        @change="toggleDarkMode"
+      />
       <!-- 消息 -->
       <el-badge :value="12" class="badge">
         <el-tooltip content="消息">
@@ -30,7 +36,7 @@
       <!-- 用户信息 -->
       <el-dropdown>
         <span class="el-dropdown-link">
-          <el-avatar size="32" icon="el-icon-user-solid"></el-avatar>
+          <el-avatar :size="32" icon="el-icon-user-solid"></el-avatar>
           <span class="username">管理员</span>
           <el-icon><ArrowDown /></el-icon>
         </span>
@@ -51,7 +57,7 @@
 </template>
 
 <script setup lang="ts">
-import { Fold, Expand, Refresh, FullScreen, Aim, User } from '@element-plus/icons-vue'
+import { Fold, Expand, Refresh, FullScreen, Aim } from '@element-plus/icons-vue'
 import { useAppStore } from '@/stores/app/appStore'
 import { onMounted, onUnmounted, ref } from 'vue'
 
@@ -80,16 +86,21 @@ onMounted(() => {
 onUnmounted(() => {
   document.removeEventListener('fullscreenchange', handleFullscreenChange)
 })
+
+const appStore = useAppStore()
+const { isDarkMode } = storeToRefs(appStore)
+const { toggleDarkMode } = appStore
 </script>
 
 <style scoped lang="scss">
 .app-header {
   height: 60px;
-  background-color: #fff;
+  background-color: var(--header-bg);
+  color: var(--color-text);
   display: flex;
   align-items: center;
   padding: 0 20px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--hover-bg); // ✅ 替换 #eee
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
 
   .collapse-icon {
@@ -108,7 +119,7 @@ onUnmounted(() => {
       font-size: 20px;
       transition: color 0.3s;
       &:hover {
-        color: #409eff;
+        color: var(--color-primary); // ✅ 替换 #409eff
       }
     }
   }

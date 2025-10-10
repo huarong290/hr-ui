@@ -1,0 +1,50 @@
+// src/styles/_common.scss 📄 页面基础样式
+
+// ✅ 引入变量和混入模块
+@use './variables' as *;
+@use './mixins' as *;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $font-family;
+  font-size: $font-size-base;
+  background-color: var(--color-bg); // ✅ 替换为 CSS 变量
+  color: var(--color-text); // ✅ 替换为 CSS 变量
+}
+
+// 📦 卡片容器
+.card {
+  background-color: var(--card-bg); // ✅ 替换为 CSS 变量
+  border-radius: $border-radius;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+// 📌 标题样式
+.page-title {
+  font-size: $font-size-large;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: var(--color-primary); // ✅ 替换为 CSS 变量
+}
+
+// 📍 表格样式
+.table-wrapper {
+  .el-table {
+    border-radius: $border-radius;
+    overflow: hidden;
+  }
+}
+
+// 🧭 面包屑导航
+.breadcrumb {
+  margin-bottom: 16px;
+  font-size: $font-size-small;
+  color: var(--color-text-secondary); // ✅ 替换为 CSS 变量（需定义）
+}
+
+// 🧼 通用清除浮动
+.clearfix {
+  @include clearfix;
+}
